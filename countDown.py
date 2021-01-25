@@ -1,9 +1,4 @@
-import requests
-import json
-import DataStore
-
-session = requests.session()
-headers = {
+__headers = {
            'accept': 'application/json, text/plain, */*',
            'accept-encoding': 'gzip, deflate, br',
            'accept-language': 'en-GB,en;q=0.9,en-US;q=0.8',
@@ -41,8 +36,7 @@ headers = {
            'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko)'
                          ' Chrome/87.0.4280.141 Safari/537.36',
            'x-requested-with': 'OnlineShopping.WebApp'}
-url = 'https://shop.countdown.co.nz/api/v1/products?target=specials' \
+__url = 'https://shop.countdown.co.nz/api/v1/products?target=specials' \
       '&promo_position=Tile&promo_creative=CTA%20button&promo_name=%20-%20Specials%20Hub&itemID=All%20Specials'
-r = session.get(url, headers=headers, allow_redirects=True)
-data = r.json()
-DataStore.update_json(data['products']['items'])
+
+count_down = (__headers, __url)

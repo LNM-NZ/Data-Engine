@@ -1,16 +1,12 @@
-# This is a sample Python script.
+from data import db
+import requests
+import countDown
+from data import repository
 
-# Press ⌃R to execute it or replace it with your code.
-# Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    print_hi('PyCharm')
+    session = requests.session()
+    headers, url = countDown.count_down
+    r = session.get(url, headers=headers, allow_redirects=True)
+    data = r.json()
+    repository.dispose_json(data['products']['items'])
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
