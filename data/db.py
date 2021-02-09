@@ -162,14 +162,9 @@ def insert(table, **kw):
 
     :param table:
     :param kw:
-    :return:
+    :return: count of influenced rows
     """
     cols, args = zip(*kw.items())
     sql = 'insert into {0} ({1}) values ({2})'.\
         format(table, ','.join(['{0}'.format(col) for col in cols]), ','.join(['?' for i in range(len(cols))]))
     return _execute(sql, *args)
-
-
-def update_json(json):
-    for item in json:
-        print('name={0}, brand={1}'.format(item['name'], item['brand']))

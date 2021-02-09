@@ -1,4 +1,7 @@
-__headers = {
+from store.common import _common_headers
+from store.common import Store
+
+_headers = {
            'accept': 'application/json, text/plain, */*',
            'accept-encoding': 'gzip, deflate, br',
            'accept-language': 'en-GB,en;q=0.9,en-US;q=0.8',
@@ -33,10 +36,8 @@ __headers = {
            'sec-fetch-dest': 'empty',
            'sec-fetch-mode': 'cors',
            'sec-fetch-site': 'same-origin',
-           'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko)'
-                         ' Chrome/87.0.4280.141 Safari/537.36',
            'x-requested-with': 'OnlineShopping.WebApp'}
-__url = 'https://shop.countdown.co.nz/api/v1/products?target=specials' \
+_url = 'https://shop.countdown.co.nz/api/v1/products?target=specials' \
       '&promo_position=Tile&promo_creative=CTA%20button&promo_name=%20-%20Specials%20Hub&itemID=All%20Specials'
-
-count_down = (__headers, __url)
+_headers.update(_common_headers)
+count_down = Store(headers=_headers, url=_url, query=None)
